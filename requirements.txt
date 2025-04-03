@@ -12,3 +12,4 @@ keras
 numpy
 tensorflow
 opencv-python
+timeout-decorator
