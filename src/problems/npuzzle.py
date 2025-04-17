@@ -2,15 +2,10 @@
 
 """
 
-import time
-import timeout_decorator
-from _socket import timeout
-from random import randint, shuffle
+from random import shuffle
 
-from pygments.util import *
-import pandas as pd
-from TimeoutRun import *
-from search import *
+from src.utils.TimeoutRun import runAlgorithmm, printAllSolutions
+from src.core.search import *
 import math
 
 """
@@ -87,7 +82,7 @@ def manh(node):
 
 
 if __name__ == '__main__':
-    res = random8Puzzle(10, 4)
+    res = random8Puzzle(5, 3)
     for alg in [astar_search, greedy_best_first_graph_search, iterative_deepening_search_graph, astar_tree_search, best_first_tree_search, iterative_deepening_search]:
         for h in [linear, manh, gaschnig, max_heuristic]:
             if alg == iterative_deepening_search_graph or alg == iterative_deepening_search:

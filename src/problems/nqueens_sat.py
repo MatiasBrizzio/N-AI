@@ -1,10 +1,8 @@
-import subprocess
 import time
 
-from TimeoutRun import runDpll, runSAT
-from search import NQueensProblem
-from utils import *
-from logic import *
+from src.utils.TimeoutRun import runDpll, runSAT
+from src.core.search import NQueensProblem
+from src.core.logic import *
 
 BOARD_SIZE = 27
 
@@ -127,6 +125,9 @@ if __name__ == '__main__':
         except TimeoutError:
             print("for size {} minisat timeout".format(BOARD_SIZE))
         else:
+            import os
+            print("Current Working Directory:", os.getcwd())
+            print("Trying to open:", os.path.abspath("test.out"))  # Changed from ../../test.out
             f = open("test.out", "r")
             f1 = f.readlines()
             res = list()

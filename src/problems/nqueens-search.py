@@ -1,9 +1,7 @@
-import time
 from random import *
-from search import *
-import timeout_decorator
-from TimeoutRun import *
-
+from src.core.search import *
+from src.utils.TimeoutRun import runAlgorithmm
+from src.utils.TimeoutRun import printAllSolutions
 
 def randomNQueens(bound, size):
     pop = []
@@ -20,7 +18,7 @@ def randomNQueens(bound, size):
 if __name__ == '__main__':
     AMOUNT = 10
     checkSol = NQueensProblem(8)
-    for tsize in range(8, 50):
+    for tsize in range(8, 10):
         print("Running with board size {}".format(tsize))
         lst = randomNQueens(AMOUNT, tsize)
         for alg in [hill_climbing, hill_climbing_sideway, simulated_annealing, iterative_deepening_search_graph, hill_climbing_random_restart]:

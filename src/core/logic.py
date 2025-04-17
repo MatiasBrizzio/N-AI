@@ -30,13 +30,13 @@ And a few other functions:
     unify            Do unification of two FOL sentences
     diff, simp       Symbolic differentiation and simplification
 """
-from csp import parse_neighbors, UniversalDict
-from utils import (
+from src.core.csp import parse_neighbors, UniversalDict
+from src.utils.utils import (
     removeall, unique, first, argmax, probability,
     isnumber, issequence, Expr, expr, subexpressions
 )
-from agents import Agent, Glitter, Bump, Stench, Breeze, Scream
-from search import astar_search, PlanRoute
+from src.core.agents import Agent, Glitter, Bump, Stench, Breeze, Scream
+from src.core.search import astar_search, PlanRoute
 
 import itertools
 import random

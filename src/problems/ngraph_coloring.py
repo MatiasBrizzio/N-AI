@@ -1,7 +1,6 @@
 import time
 
-from utils import *
-from logic import *
+from src.core.logic import *
 
 import itertools
 
@@ -39,16 +38,12 @@ def gc2pl(neigh, numofcolours):
     for sl in sublist(lst, numofcolours):
         firstclause.append(associate('|', sl))
 
-    print(firstclause)
-
     # Each node has to be colored by only one colour
     for sl in sublist(lstne, numofcolours):
         for i in range(0, len(sl)):
             lst = zip_with_scalar(sl[i + 1:], sl[i])
             for x in lst:
                 firstclause.append(associate('|', x))
-
-    print(firstclause)  
 
     # two adj nodes must be colored by different colours
     visited = set()
@@ -65,7 +60,6 @@ def gc2pl(neigh, numofcolours):
                 firstclause.append(associate('|', cl))
 
     b = list(set(firstclause))
-    print(firstclause)
     return associate('&', b)
 
 
@@ -119,8 +113,8 @@ def graph_generator(number_of_nodes, prob):
     graph = dict()
     nodes = list()
     for i in range(number_of_nodes):
-        nodes.append(str('Node') + str(i))
-        graph[str('Node') + str(i)] = list()
+        nodes.append(str('N') + str(i))
+        graph[str('N') + str(i)] = list()
     for i in nodes:
         lst = list()
         for j in nodes:
@@ -138,22 +132,22 @@ def graph_generator(number_of_nodes, prob):
 
 
 if __name__ == '__main__':
-    for i in range(1, 2):
-        nnodes = random.randint(1, 2)
+    for i in range(1, 10):
+        nnodes = random.randint(1, 10)
         prob = random.uniform(0, 1)
-        numcolors = random.randint(1, nnodes)
+        numcolors = random.randint(1, nnodes + 1)
         a = graph_generator(nnodes, prob)
         print("for graph with {} colors and {} nodes: {}  :".format(numcolors, nnodes, a))
         st = time.time()
         res = backtrackingalg(a, numcolors)
-        print("Backtraking: Taken time: {}".format(time.time() - st))
+        print("Backtracking: Taken time: {}".format(time.time() - st))
         if res is None: print('No solution')
         else:
             for x in res:
                 print(x)
 
         f = gc2pl(a, numcolors)
-        print(f)
+        # print(f)
         st = time.time()
         x = dpll_satisfiable(f)
         print("DPLL CNF: taken time: {}:".format(time.time() - st))
@@ -162,4 +156,14 @@ if __name__ == '__main__':
             for k in x.keys():
                 if x[k]:
                     print(k, end=',')
+            print()
+
+        a = MapColoringSAT(list(map(str, list(range(1, numcolors + 1)))), a)
+        st = time.time()
+        x = dpll_satisfiable(a)
+        print("DPLL book CNF taken time: {}:".format(time.time() - st))
+        if not x: print('No solution')
+        else:
+            for k in x.keys():
+                if x[k]: print(k, end=',')
             print()

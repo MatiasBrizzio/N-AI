@@ -4,19 +4,17 @@ The way to use this code is to subclass Problem to create a class of problems,
 then create problem instances and solve them with calls to the various search
 functions."""
 
-from utils import (
+from src.utils.utils import (
     is_in, argmin, argmax, argmax_random_tie, probability, weighted_sampler,
     memoize, print_table, open_data, PriorityQueue, name,
     distance, vector_add
 )
 
-from collections import defaultdict, deque
+from collections import deque
 import math
 import random
 import sys
 import bisect
-from operator import itemgetter
-
 
 infinity = float('inf')
 
