@@ -31,12 +31,13 @@ And a few other functions:
     diff, simp       Symbolic differentiation and simplification
 """
 from src.core.csp import parse_neighbors, UniversalDict
+from src.core.search_algorithms.informed import astar_search
+from src.problems.planRouteProblem import PlanRouteProblem
 from src.utils.utils import (
     removeall, unique, first, argmax, probability,
     isnumber, issequence, Expr, expr, subexpressions
 )
 from src.core.agents import Agent, Glitter, Bump, Stench, Breeze, Scream
-from src.core.search import astar_search, PlanRoute
 
 import itertools
 import random
@@ -1208,7 +1209,7 @@ class HybridWumpusAgent(Agent):
         return action
 
     def plan_route(self, current, goals, allowed):
-        problem = PlanRoute(current, goals, allowed, self.dimrow)
+        problem = PlanRouteProblem(current, goals, allowed, self.dimrow)
         return astar_search(problem).solution()
 
     def plan_shot(self, current, goals, allowed):

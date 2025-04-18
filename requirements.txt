@@ -1,6 +1,6 @@
 pyevolve
 pytest
-networkx==1.11
+networkx
 jupyter
 pandas
 matplotlib

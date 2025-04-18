@@ -4,14 +4,17 @@
 
 from random import shuffle
 
-from src.utils.TimeoutRun import runAlgorithmm, printAllSolutions
-from src.core.search import *
+from src.core.boggle import exact_sqrt
+from src.core.search_algorithms.informed import astar_search, greedy_best_first_graph_search, astar_tree_search, \
+    best_first_tree_search
+from src.core.search_algorithms.uninformed import iterative_deepening_search_graph, iterative_deepening_search
+from src.problems.EightPuzzleProblem import EightPuzzle
+from src.utils.TimeoutRun import run_algorithm, print_all_solutions
 import math
 
 """
     Random generator of eight puzzle instances
 """
-
 
 def random8Puzzle(amount, k):
     size = (k*k)
@@ -87,5 +90,5 @@ if __name__ == '__main__':
         for h in [linear, manh, gaschnig, max_heuristic]:
             if alg == iterative_deepening_search_graph or alg == iterative_deepening_search:
                 h = None
-            sol, vst, deep, tm, fal = runAlgorithmm(alg, res, h)
-            printAllSolutions(alg, sol, vst, deep, tm, fal, h)
+            sol, vst, deep, tm, fal = run_algorithm(alg, res, h)
+            print_all_solutions(alg, sol, vst, deep, tm, fal, h)
