@@ -75,7 +75,7 @@ def run_dpll(algorithm, s):
 @timeout_decorator.timeout(20, timeout_exception=TimeoutError)
 def run_command():
     with open(os.devnull, 'w') as devnull:
-        subprocess.call(["external/minisat", "example.cnf", "test.out"], stdout=devnull, stderr=devnull)
+        subprocess.call(["external/minisat", "example.cnf", "tests.out"], stdout=devnull, stderr=devnull)
 
 def run_sat():
     try:
