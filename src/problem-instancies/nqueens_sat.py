@@ -120,15 +120,15 @@ if __name__ == '__main__':
         f.close()
         st = time.time()
         try:
-            # tm = runSAT(subprocess.call, ["./aalta", "example.cnf", "test.out"])
+            # tm = runSAT(subprocess.call, ["./aalta", "example.cnf", "tests.out"])
             tm = run_sat()
         except TimeoutError:
             print("for size {} minisat timeout".format(BOARD_SIZE))
         else:
             import os
             print("Current Working Directory:", os.getcwd())
-            print("Trying to open:", os.path.abspath("test.out"))  # Changed from ../../test.out
-            f = open("test.out", "r")
+            print("Trying to open:", os.path.abspath("tests.out"))  # Changed from ../../tests.out
+            f = open("tests.out", "r")
             f1 = f.readlines()
             res = list()
             st = ""
