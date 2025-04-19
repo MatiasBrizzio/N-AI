@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from src.core.problem import Problem
 import math
 
@@ -130,6 +132,21 @@ class EightPuzzle(Problem):
                         break
             res += 1
         return res
+
+
+    def value(self, state: Tuple[int, ...]) -> int:
+        """Return a value for the state, maximized when closer to the goal.
+
+        Counts the number of tiles in their correct positions (0 to 8). Higher values
+        indicate states closer to the goal, suitable for hill climbing.
+
+        Args:
+            state: The puzzle state as a tuple of integers.
+
+        Returns:
+            The number of correctly placed tiles.
+        """
+        return sum(1 for s, g in zip(state, self.goal) if s == g)
 
     def h(self, node):
         """ Return the heuristic value for a given state. Default heuristic function used is
