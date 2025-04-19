@@ -1,8 +1,9 @@
 import time
 
 from src.problems.NQueensProblem import NQueensProblem
-from src.utils.TimeoutRun import run_dpll, run_sat
 from src.core.logic import *
+from src.utils.sat_utils import run_dpll_algorithm, run_sat_solver
+from src.utils.search_utils import TimeoutRunner
 
 BOARD_SIZE = 27
 
@@ -93,7 +94,7 @@ if __name__ == '__main__':
             model = list()
             found = False
             try:
-                found = run_dpll(dpll_satisfiable, res)
+                found = run_dpll_algorithm(dpll_satisfiable, res, timeout=20)
                 if not isinstance(found, bool):
                     for k in found.keys():
                         if found[k]: model.append(k)
@@ -121,7 +122,7 @@ if __name__ == '__main__':
         st = time.time()
         try:
             # tm = runSAT(subprocess.call, ["./aalta", "example.cnf", "tests.out"])
-            tm = run_sat()
+            tm = run_sat_solver()
         except TimeoutError:
             print("for size {} minisat timeout".format(BOARD_SIZE))
         else:

@@ -9,8 +9,10 @@ from src.core.search_algorithms.informed import astar_search, greedy_best_first_
     best_first_tree_search
 from src.core.search_algorithms.uninformed import iterative_deepening_search_graph, iterative_deepening_search
 from src.problems.EightPuzzleProblem import EightPuzzle
-from src.utils.TimeoutRun import run_algorithm, print_all_solutions
 import math
+
+from src.utils.print_utils import print_all_solutions
+from src.utils.search_utils import TimeoutRunner
 
 """
     Random generator of eight puzzle instances
@@ -86,9 +88,10 @@ def manh(node):
 
 if __name__ == '__main__':
     res = random8Puzzle(5, 3)
+    runner = TimeoutRunner(default_timeout=5)  # Configurable timeout
     for alg in [astar_search, greedy_best_first_graph_search, iterative_deepening_search_graph, astar_tree_search, best_first_tree_search, iterative_deepening_search]:
         for h in [linear, manh, gaschnig, max_heuristic]:
             if alg == iterative_deepening_search_graph or alg == iterative_deepening_search:
                 h = None
-            sol, vst, deep, tm, fal = run_algorithm(alg, res, h)
+            sol, vst, deep, tm, fal = runner.run(alg, res, h)
             print_all_solutions(alg, sol, vst, deep, tm, fal, h)
