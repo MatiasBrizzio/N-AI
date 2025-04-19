@@ -1,5 +1,5 @@
 # src/problems/PeakFindingProblem.py
-from src.core.problem import Problem
+from src.core.Problem import Problem
 from src.utils.utils import vector_add
 
 # Pre-defined actions for PeakFindingProblem

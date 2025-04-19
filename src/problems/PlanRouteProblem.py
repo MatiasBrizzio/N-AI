@@ -1,5 +1,5 @@
-# src/problems/planRouteProblem.py
-from src.core.problem import Problem
+# src/problems/PlanRouteProblem.py
+from src.core.Problem import Problem
 
 class PlanRouteProblem(Problem):
     def __init__(self, initial, goal, allowed, dimrow):

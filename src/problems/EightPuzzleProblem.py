@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from src.core.problem import Problem
+from src.core.Problem import Problem
 import math
 
 class EightPuzzle(Problem):

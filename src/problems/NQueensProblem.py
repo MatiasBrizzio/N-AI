@@ -1,4 +1,4 @@
-from src.core.problem import Problem, Node
+from src.core.Problem import Problem, Node
 
 class NQueensProblem(Problem):
     def __init__(self, N, node=None):

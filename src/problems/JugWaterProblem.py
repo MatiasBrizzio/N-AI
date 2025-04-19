@@ -1,5 +1,5 @@
 # src/problems/JugWaterProblem.py
-from src.core.problem import Problem
+from src.core.Problem import Problem
 
 class JugWaterProblem(Problem):
     def actions(self, state):

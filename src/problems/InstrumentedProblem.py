@@ -1,10 +1,10 @@
-# src/core/compare.py
+# src/core/InstrumentedProblem.py
 from src.core.graph import GraphProblem, romania_map, australia_map
 from src.core.search_algorithms.informed import recursive_best_first_search
 from src.core.search_algorithms.uninformed import depth_first_graph_search, breadth_first_graph_search, \
     breadth_first_tree_search, iterative_deepening_search, depth_limited_search
 from src.utils.utils import print_table, name
-from src.core.problem import Problem
+from src.core.Problem import Problem
 
 class InstrumentedProblem(Problem):
 
