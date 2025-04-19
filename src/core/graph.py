@@ -2,7 +2,7 @@
 import random
 
 from src.utils.utils import distance, argmin
-from src.core.problem import Problem
+from src.core.Problem import Problem
 
 infinity = float('inf')
 
@@ -63,8 +63,6 @@ class Graph:
         s2 = set([k2 for v in self.graph_dict.values() for k2, v2 in v.items()])
         nodes = s1.union(s2)
         return list(nodes)
-
-
 
 def UndirectedGraph(graph_dict=None):
     """Build a Graph where every edge (including future ones) goes both ways."""
@@ -154,7 +152,6 @@ class GraphProblemStochastic(GraphProblem):
 
     def path_cost(self):
         raise NotImplementedError
-
 
 
 # Graph data

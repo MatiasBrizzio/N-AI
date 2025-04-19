@@ -32,7 +32,7 @@ And a few other functions:
 """
 from src.core.csp import parse_neighbors, UniversalDict
 from src.core.search_algorithms.informed import astar_search
-from src.problems.planRouteProblem import PlanRouteProblem
+from src.problems.PlanRouteProblem import PlanRouteProblem
 from src.utils.utils import (
     removeall, unique, first, argmax, probability,
     isnumber, issequence, Expr, expr, subexpressions

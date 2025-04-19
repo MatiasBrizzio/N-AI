@@ -6,7 +6,7 @@ optimized for problems defined in src.core.problem. These algorithms use heurist
 the search toward the goal state, making them suitable for puzzles like EightPuzzle or Boggle.
 """
 
-from src.core.problem import Node
+from src.core.Problem import Node
 from src.utils.utils import PriorityQueue, memoize
 from typing import Optional, Tuple, Union, Callable
 

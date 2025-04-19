@@ -1,7 +1,7 @@
 # src/core/search_algorithms/uninformed.py
 import sys
 from collections import deque
-from src.core.problem import Node
+from src.core.Problem import Node
 from src.core.search_algorithms.informed import best_first_graph_search
 
 infinity = float('inf')

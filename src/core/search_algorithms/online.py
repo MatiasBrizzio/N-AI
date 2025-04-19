@@ -8,7 +8,7 @@ applications like robotics, game agents, or dynamic puzzles in the N-AI project.
 """
 
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-from src.core.problem import Problem
+from src.core.Problem import Problem
 from src.utils.utils import argmin
 
 class OnlineDFSAgent:

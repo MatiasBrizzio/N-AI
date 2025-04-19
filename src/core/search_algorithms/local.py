@@ -12,7 +12,7 @@ import math
 import random
 import sys
 from typing import Callable, List, Optional, Tuple
-from src.core.problem import Node, Problem
+from src.core.Problem import Node, Problem
 from src.utils.utils import argmax_random_tie, probability
 
 def hill_climbing(problem: Problem) -> Tuple[Node, int, int]:

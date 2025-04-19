@@ -1,5 +1,5 @@
 # src/core/__init__.py
-from .problem import Problem, Node, SimpleProblemSolvingAgentProgram
+from .Problem import Problem, Node, SimpleProblemSolvingAgentProgram
 from .search_algorithms.uninformed import (
     breadth_first_tree_search, breadth_first_graph_search,
     depth_first_tree_search, depth_first_graph_search,
@@ -24,4 +24,3 @@ from .search_algorithms.bidirectional import bidirectional_search
 from .graph import Graph, UndirectedGraph, RandomGraph, GraphProblem, GraphProblemStochastic
 from .graph import romania_map, vacuum_world, one_dim_state_space, australia_map
 from .boggle import BoggleFinder, Wordlist, random_boggle, boggle_hill_climbing
-from .compare import InstrumentedProblem, compare_searchers, compare_graph_searchers
