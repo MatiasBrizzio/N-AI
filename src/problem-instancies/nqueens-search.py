@@ -3,8 +3,8 @@ from src.core.search_algorithms.local import hill_climbing, hill_climbing_sidewa
     simulated_annealing
 from src.core.search_algorithms.uninformed import iterative_deepening_search_graph
 from src.problems.NQueensProblem import NQueensProblem
-from src.utils.TimeoutRun import run_algorithm
-from src.utils.TimeoutRun import print_all_solutions
+from src.utils.search_utils import TimeoutRunner
+from src.utils.print_utils import print_all_solutions
 
 def random_nqueens(bound, size):
     pop = []
@@ -24,11 +24,12 @@ if __name__ == '__main__':
     for tsize in range(8, 10):
         print("Running with board size {}".format(tsize))
         lst = random_nqueens(AMOUNT, tsize)
+        runner = TimeoutRunner(default_timeout=5)  # Configurable timeout
         for alg in [hill_climbing, hill_climbing_sideway, simulated_annealing, iterative_deepening_search_graph, hill_climbing_random_restart]:
             if alg == hill_climbing_random_restart:
-                sol, vst, deep, tm, fal = run_algorithm(alg, lst, lambda: random_nqueens(1, tsize).pop(0))
+                sol, vst, deep, tm, fal = runner.run(alg, lst, lambda: random_nqueens(1, tsize).pop(0))
             else:
-                sol, vst, deep, tm, fal = run_algorithm(alg, lst)
+                sol, vst, deep, tm, fal = runner.run(alg, lst)
             sl = list()
             for s in sol:
                 if checkSol.goal_test(s.state):
